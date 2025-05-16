@@ -22,7 +22,8 @@ theme = "PaperMod"
     title = "Yen Tsai"
     subtitle = "後端工程師，熱愛分享技術與生活。"
     imageUrl = "https://avatars.githubusercontent.com/u/22338002?v=4"
-
+    math = true
+    
     [[params.profileMode.buttons]]
       name = "部落格文章"
       url = "/blog"
