@@ -1,0 +1,65 @@
+baseURL = "https://yentsai.dev/"   # 你的網站網址，部署時記得改成正式網址
+languageCode = "zh-tw"
+title = "Yen Tsai dev"
+theme = "PaperMod"
+[pagination]
+  pagerSize = 10
+
+[params]
+  author = "Yen Tsai"
+  description = "後端工程師 | 喜歡 Vue、區塊鏈、健身與美食"
+  keywords = ["後端", "Vue", "區塊鏈", "健身", "個人網站"]
+
+  ShowReadingTime = true
+  ShowShareButtons = true
+  ShowCodeCopyButtons = true
+  ShowBreadCrumbs = true
+  ShowPostNavLinks = true
+  ShowAuthor = true
+
+  [params.profileMode]
+    enabled = true
+    title = "Yen Tsai"
+    subtitle = "後端工程師，熱愛分享技術與生活。"
+    imageUrl = "https://avatars.githubusercontent.com/u/22338002?v=4"
+
+    [[params.profileMode.buttons]]
+      name = "部落格文章"
+      url = "/blog"
+
+    [[params.profileMode.buttons]]
+      name = "關於我"
+      url = "/experience"
+
+  [[params.socialIcons]]
+    name = "github"
+    url = "https://github.com/yanzzzzzzzzz"
+
+  [[params.socialIcons]]
+    name = "linkedin"
+    url = "https://www.linkedin.com/in/jack-tsai-1033721a5/"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+[menu]
+
+  [[menu.main]]
+    identifier = "experience"
+    name = "Experience"
+    url = "/experience/"
+    weight = 1
+
+  [[menu.main]]
+    identifier = "project"
+    name = "Project"
+    url = "/project/"
+    weight = 2
+
+  [[menu.main]]
+    identifier = "blog"
+    name = "Blog"
+    url = "/blog/"
+    weight = 3
