@@ -5,40 +5,105 @@ title: "Projects"
 <style>
 .card-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
   margin-top: 1rem;
 }
 .card {
   border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease;
+}
+.card:hover {
+  transform: translateY(-4px);
+}
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+.card-content {
   padding: 1rem;
-  border-radius: 8px;
-  box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
 }
 .card h3 {
-  margin-top: 0;
+  margin: 0 0 0.5rem;
+}
+.card .skills {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
 }
 .card a {
   display: inline-block;
-  margin-top: 0.5rem;
+  margin-top: 0.75rem;
+  margin-right: 0.75rem;
+  font-size: 0.85rem;
   color: #007acc;
 }
 </style>
 
 <div class="card-container">
+
   <div class="card">
-    <h3>AI 記帳機器人 🤖</h3>
-    <p>LINE Bot + GPT + C# 打造智慧記帳服務，支援 OCR + 語意分析。</p>
-    <a href="https://github.com/yanzzzzzzzzz/ai-expense-bot" target="_blank">GitHub</a>
+    <img src="/images/Advanced-Color-to-Gray-Conversion.png" alt="Color to Gray" />
+    <div class="card-content">
+      <h3>Advanced Color to Gray Conversion</h3>
+      <p>Implemented a SIGGRAPH paper for advanced color-to-grayscale transformation, enhancing visual contrast.</p>
+      <div class="skills">Skills: Python, Gray Conversion</div>
+      <a href="#">GitHub</a>
+    </div>
   </div>
+
   <div class="card">
-    <h3>部落格網站 ✍️</h3>
-    <p>用 Hugo + GitHub Pages 架設的個人網站，支援 SEO、Markdown、自動部署。</p>
-    <a href="https://yentsai.dev" target="_blank">Demo</a>
+    <img src="/images/goose-farm.png" alt="Goose Farm" />
+    <div class="card-content">
+      <h3>Goose Farm Egg Analysis</h3>
+      <p>Developed an egg production analysis system for goose farms using YOLO-based object detection.</p>
+      <div class="skills">Skills: C#, Python, YOLO</div>
+      <a href="#">GitHub</a>
+    </div>
   </div>
+
   <div class="card">
-    <h3>夜市美食推薦平台 🍢</h3>
-    <p>Vue + Vite + Firebase 架設地圖型美食推薦網站。</p>
-    <a href="#">詳細介紹</a>
+    <img src="/images/panel-detection.jpg" alt="Panel Defect" />
+    <div class="card-content">
+      <h3>Panel Defect Detection</h3>
+      <p>Built a system for defect classification on display panels using image matching and feature extraction.</p>
+      <div class="skills">Skills: MATLAB, Template Matching</div>
+      <a href="#">GitHub</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="/images/hand-rehabilitation-game.png" alt="Rehab Game" />
+    <div class="card-content">
+      <h3>Hand Rehabilitation Game</h3>
+      <p>Created an interactive rehabilitation game using Unity and Leap Motion to detect hand gestures in real time.</p>
+      <div class="skills">Skills: Unity, C#</div>
+      <a href="#">Demo</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="/images/indoor-design-project-management-system.png" alt="Indoor Design" />
+    <div class="card-content">
+      <h3>Indoor Design Project Management</h3>
+      <p>Designed a project management system for interior design studios, including task tracking and file management.</p>
+      <div class="skills">Skills: Vue, C#, MSSQL</div>
+      <a href="#">Demo</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="/images/Wafer-Inspection.jpg" alt="Wafer Inspection" />
+    <div class="card-content">
+      <h3>Wafer Inspection System</h3>
+      <p>Developed a defect inspection system for semiconductor wafers using motion control and SECS/GEM protocols.</p>
+      <div class="skills">Skills: C#, Motion Control, Defect Detection, SECS/GEM</div>
+      <a href="#">GitHub</a>
+    </div>
   </div>
 </div>
