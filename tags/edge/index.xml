@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Edge on Yen Tsai dev</title><link>https://yentsaidev.com/tags/edge/</link><description>Recent content in Edge on Yen Tsai dev</description><generator>Hugo</generator><language>zh-tw</language><lastBuildDate>Tue, 15 Dec 2020 21:33:00 +0800</lastBuildDate><atom:link href="https://yentsaidev.com/tags/edge/index.xml" rel="self" type="application/rss+xml"/><item><title>Canny Edge Detector</title><link>https://yentsaidev.com/blog/first-post/</link><pubDate>Tue, 15 Dec 2020 21:33:00 +0800</pubDate><guid>https://yentsaidev.com/blog/first-post/</guid><description>&lt;h2 id="canny-edge檢測流程">Canny edge檢測流程&lt;/h2>
+&lt;ol>
+&lt;li>使用高斯濾波器&lt;/li>
+&lt;li>使用Sobel濾波器取出x,y方向梯度&lt;/li>
+&lt;li>對梯度進行非極大值抑制&lt;/li>
+&lt;li>使用滯後閾值&lt;/li>
+&lt;/ol>
+&lt;h2 id="高斯濾波">高斯濾波&lt;/h2>
+&lt;p>平滑影像，濾除雜訊&lt;/p>
+&lt;h2 id="滯後閾值">滯後閾值&lt;/h2>
+&lt;p>設定高閾值與低閾值&lt;br>
+&lt;img src="https://yanzzzzzzzzz.github.io/img/Hysteresis-2.png" width="400"/>&lt;/p></description></item></channel></rss>
