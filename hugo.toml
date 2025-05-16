@@ -1,4 +1,4 @@
-baseURL = "https://yentsai.dev/"   # 你的網站網址，部署時記得改成正式網址
+baseURL = "https://yentsaidev.com/"
 languageCode = "zh-tw"
 title = "Yen Tsai dev"
 theme = "PaperMod"
