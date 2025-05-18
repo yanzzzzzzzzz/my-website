@@ -23,8 +23,8 @@ title: "Projects"
 }
 .card img {
   width: 100%;
-  height: 180px;
-  object-fit: cover;
+  height: 200px;
+  object-fit: scale-down;
 }
 .card-content {
   padding: 1rem;
@@ -38,10 +38,9 @@ title: "Projects"
 }
 .card a {
   display: inline-block;
-  margin-top: 0.75rem;
-  margin-right: 0.75rem;
   font-size: 0.85rem;
   color: #007acc;
+  text-decoration: none;
 }
 </style>
 
@@ -53,17 +52,17 @@ title: "Projects"
       <h3>Advanced Color to Gray Conversion</h3>
       <p>Implemented a SIGGRAPH paper for advanced color-to-grayscale transformation, enhancing visual contrast.</p>
       <div class="skills">Skills: Python, Gray Conversion</div>
-      <a href="#">GitHub</a>
+      <a target="_blank" href="https://github.com/yanzzzzzzzzz/Advanced-Color-to-Gray-Conversion">GitHub</a>
     </div>
   </div>
 
   <div class="card">
     <img src="/images/goose-farm.png" alt="Goose Farm" />
     <div class="card-content">
-      <h3>Goose Farm Egg Analysis</h3>
+      <h3>Goose Farm Egg Analysis System</h3>
       <p>Developed an egg production analysis system for goose farms using YOLO-based object detection.</p>
       <div class="skills">Skills: C#, Python, YOLO</div>
-      <a href="#">GitHub</a>
+      <a target="_blank" href="https://ieeexplore.ieee.org/document/8644970">Paper</a>
     </div>
   </div>
 
@@ -73,7 +72,6 @@ title: "Projects"
       <h3>Panel Defect Detection</h3>
       <p>Built a system for defect classification on display panels using image matching and feature extraction.</p>
       <div class="skills">Skills: MATLAB, Template Matching</div>
-      <a href="#">GitHub</a>
     </div>
   </div>
 
@@ -83,7 +81,7 @@ title: "Projects"
       <h3>Hand Rehabilitation Game</h3>
       <p>Created an interactive rehabilitation game using Unity and Leap Motion to detect hand gestures in real time.</p>
       <div class="skills">Skills: Unity, C#</div>
-      <a href="#">Demo</a>
+      <a target="_blank" href="https://youtu.be/IYXUUOW3wrU?si=VhDoxTl7Gz7xgQmH">Demo</a>
     </div>
   </div>
 
@@ -93,7 +91,6 @@ title: "Projects"
       <h3>Indoor Design Project Management</h3>
       <p>Designed a project management system for interior design studios, including task tracking and file management.</p>
       <div class="skills">Skills: Vue, C#, MSSQL</div>
-      <a href="#">Demo</a>
     </div>
   </div>
 
@@ -103,7 +100,6 @@ title: "Projects"
       <h3>Wafer Inspection System</h3>
       <p>Developed a defect inspection system for semiconductor wafers using motion control and SECS/GEM protocols.</p>
       <div class="skills">Skills: C#, Motion Control, Defect Detection, SECS/GEM</div>
-      <a href="#">GitHub</a>
     </div>
   </div>
 </div>
