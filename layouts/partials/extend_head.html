@@ -1,0 +1,35 @@
+{{- /* Head custom content area start */ -}} {{- /* Insert any custom code
+(web-analytics, resources, etc.) - it will appear in the <head></head> section
+of every page. */ -}} {{- /* Can be overwritten by partial with the same name in
+the global layouts. */ -}}
+
+<!-- KaTeX CSS -->
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+/>
+
+<!-- KaTeX JS -->
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+></script>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+></script>
+
+<!-- KaTeX Auto-render Extension -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false },
+      ],
+      throwOnError: false,
+    });
+  });
+</script>
+
+{{- /* Head custom content area end */ -}}
