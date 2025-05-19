@@ -20,16 +20,16 @@ theme = "PaperMod"
   [params.profileMode]
     enabled = true
     title = "Yen Tsai"
-    subtitle = "後端工程師，熱愛分享技術與生活。"
+    subtitle = "Backend Engineer, passionate about sharing technology and life experiences."
     imageUrl = "https://avatars.githubusercontent.com/u/22338002?v=4"
     math = true
     
     [[params.profileMode.buttons]]
-      name = "部落格文章"
-      url = "/blog"
+      name = "Project"
+      url = "/project"
 
     [[params.profileMode.buttons]]
-      name = "關於我"
+      name = "About Me"
       url = "/experience"
 
   [[params.socialIcons]]
