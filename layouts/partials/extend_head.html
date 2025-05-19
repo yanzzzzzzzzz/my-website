@@ -1,23 +1,16 @@
 {{- /* Head custom content area start */ -}} {{- /* Insert any custom code
-(web-analytics, resources, etc.) - it will appear in the <head></head> section
+(web-analytics, resources, etc.) - it will appear in the
+
+<head></head> section
 of every page. */ -}} {{- /* Can be overwritten by partial with the same name in
 the global layouts. */ -}}
 
 <!-- KaTeX CSS -->
-<link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
-/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
 
 <!-- KaTeX JS -->
-<script
-  defer
-  src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
-></script>
-<script
-  defer
-  src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
-></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
 
 <!-- KaTeX Auto-render Extension -->
 <script>
@@ -32,4 +25,8 @@ the global layouts. */ -}}
   });
 </script>
 
+<!-- Custom CSS -->
+<link rel="stylesheet" href="/css/custom.css">
+
 {{- /* Head custom content area end */ -}}
+<script src="/js/image-zoom.js"></script>
