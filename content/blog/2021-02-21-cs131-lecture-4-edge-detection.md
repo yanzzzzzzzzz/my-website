@@ -8,13 +8,13 @@ mathjax: true
 toc: true
 ---
 
-## edge 的重要性
+## Edge 的重要性
 
 - 大部分的形狀等資訊可以從邊緣分析出來
 - 用 edge 來提取資訊、辨識物件
 - 回復幾何形狀與消失點(vanishing point)
 
-## edge 產生原因
+## Edge 產生原因
 
 - 表面法向不連續性(Surface normal discontinuity)：區塊內看到多個不同角度的表面
 - 深度不連續性 (Depth discontinuity)：由物體前後距離不一所產生邊緣
@@ -25,7 +25,7 @@ toc: true
 
 ## 邊緣檢測在一階微分應用
 
-edge detection Using First/Second Derivative
+Edge detection Using First/Second Derivative
 <img src="https://yanzzzzzzzzz.github.io/img/edge-in-derivatives.png"  width="400"/>
 
 透過一階微分找出亮度變化大的地方
@@ -47,7 +47,7 @@ edge detection Using First/Second Derivative
 - gradient direction：gradient vector 中 gradient 變化量最大的角度
   <img src="https://yanzzzzzzzzz.github.io/img/gradient-vector.png"  width="400"/>
 
-## noise 對 edge detection 的影響
+## Noise 對 edge detection 的影響
 
 - noise 對邊緣檢測的影響不大
 - 若有較大的影響可以考慮先對影像進行平滑運算
@@ -57,7 +57,7 @@ edge detection Using First/Second Derivative
 
 Tradeoff：影像模糊度越強，noise 越少，但 edge 也會被模糊掉
 
-## edge detector
+## Edge detector
 
 好的 edge detector 應避免這些事情發生
 
@@ -103,7 +103,8 @@ gradient magnitude & gradient direction
 與蠻力法相似，用投票的方式來找出合適的線段
 但不同的地方在於使用 hough space 將直線透過另一種公式做轉換
 
-####　 Hough space
+#### Hough space
+
 直線方程式
 $ y=ax+b $(1)
 但這個方程式(1)不能表示垂直的線段
@@ -137,13 +138,13 @@ $ r = xcos \theta + ysin \theta $ (2)
 
 ## 補充
 
-### 消失點 vanishing point
+### 消失點 Vanishing point
 
 <img src="https://yanzzzzzzzzz.github.io/img/vanishing-point.png"  width="400"/>
 
-消失點是三維空間中所有平行線相交的交點。
-消失點的應用在檢測道路上有很大的幫助，在二維影像中車道最終會在消失點相交，但真實空間的車道是平行的。
-透過 edge 尋找消失點，進行道路檢測。
+- 消失點是三維空間中所有平行線相交的交點
+- 消失點的應用在檢測道路上有很大的幫助，在二維影像中車道最終會在消失點相交，但真實空間的車道是平行的
+- 透過 edge 尋找消失點，進行道路檢測
 
 [VPGNet: Vanishing Point Guided Network for Lane and Road Marking Detection and Recognition ICCV2017-用 DeepLearning 進行消失點檢測影片](https://youtu.be/jnewRlt6UbI)
 
