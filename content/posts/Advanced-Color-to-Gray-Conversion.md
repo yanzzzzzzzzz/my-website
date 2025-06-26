@@ -34,4 +34,3 @@ toc: true
 
 - [原始論文](https://github.com/yanzzzzzzzzz/Advanced-Color-to-Gray-Conversion/blob/master/Report.pdf)
 - [GitHub 專案](https://github.com/yanzzzzzzzzz/Advanced-Color-to-Gray-Conversion)
-
