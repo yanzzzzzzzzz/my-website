@@ -49,7 +49,7 @@ title: "Projects"
   <div class="card">
     <img src="/images/Advanced-Color-to-Gray-Conversion.png" alt="Color to Gray" />
     <div class="card-content">
-      <h3><a href="/posts/Advanced-Color-to-Gray-Conversion/">Advanced Color to Gray Conversion</a></h3>
+      <h3><a href="/blog/Advanced-Color-to-Gray-Conversion/">Advanced Color to Gray Conversion</a></h3>
       <p>Implemented a SIGGRAPH paper for advanced color-to-grayscale transformation, enhancing visual contrast.</p>
       <div class="skills">Skills: Python, Gray Conversion, Image Processing</div>
       <a target="_blank" href="https://github.com/yanzzzzzzzzz/Advanced-Color-to-Gray-Conversion/blob/master/Report.pdf">Report</a>
