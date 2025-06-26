@@ -105,7 +105,7 @@ title: "Experience"
 
   <div class="timeline-item">
     <div class="timeline-date">Jul 2018 – Jul 2019</div>
-    <div class="timeline-title">👨‍💻 Intern(Industry–Academia Partnership), Long Hong Technology, Taichung</div>
+    <div class="timeline-title">👨‍💻 Intern, Long Hong Technology, Taichung</div>
     <div>
       <div class="skills">
         <span class="skill-badge">MATLAB</span>
@@ -118,7 +118,7 @@ title: "Experience"
 
   <div class="timeline-item">
     <div class="timeline-date">Jun 2017 – Jul 2018</div>
-    <div class="timeline-title">👨‍💻 Intern(Industry–Academia Partnership), Gigawin Technology, Taichung</div>
+    <div class="timeline-title">👨‍💻 Intern, Gigawin Technology, Taichung</div>
     <div>
       <div class="skills">
         <span class="skill-badge">C#</span>
