@@ -132,8 +132,32 @@
     letter-spacing: 0.5px;
   }
 
-  .year-filters,
+  .year-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
   .skill-filters {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .category-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-top: 0.5rem;
+  }
+
+  .category-label:first-child {
+    margin-top: 0;
+  }
+
+  .category-skills {
     display: flex;
     flex-wrap: wrap;
     gap: 0.4rem;
@@ -261,8 +285,6 @@
 
   .skill-tag {
     padding: 0.2rem 0.5rem;
-    background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(147, 51, 234, 0.15));
-    border: 1px solid rgba(59, 130, 246, 0.3);
     border-radius: 10px;
     font-size: 0.7rem;
     font-weight: 600;
@@ -271,11 +293,68 @@
     cursor: pointer;
   }
 
+  /* Languages - Blue */
+  .skill-tag[data-category="Languages"] {
+    background: rgba(59, 130, 246, 0.15);
+    border: 1px solid rgba(59, 130, 246, 0.5);
+  }
+
+  .skill-tag[data-category="Languages"]:hover {
+    background: #3b82f6;
+    color: white;
+    border-color: #3b82f6;
+  }
+
+  /* Frameworks - Purple */
+  .skill-tag[data-category="Frameworks"] {
+    background: rgba(147, 51, 234, 0.15);
+    border: 1px solid rgba(147, 51, 234, 0.5);
+  }
+
+  .skill-tag[data-category="Frameworks"]:hover {
+    background: #9333ea;
+    color: white;
+    border-color: #9333ea;
+  }
+
+  /* Databases - Green */
+  .skill-tag[data-category="Databases"] {
+    background: rgba(16, 185, 129, 0.15);
+    border: 1px solid rgba(16, 185, 129, 0.5);
+  }
+
+  .skill-tag[data-category="Databases"]:hover {
+    background: #10b981;
+    color: white;
+    border-color: #10b981;
+  }
+
+  /* Tools - Orange */
+  .skill-tag[data-category="Tools"] {
+    background: rgba(249, 115, 22, 0.15);
+    border: 1px solid rgba(249, 115, 22, 0.5);
+  }
+
+  .skill-tag[data-category="Tools"]:hover {
+    background: #f97316;
+    color: white;
+    border-color: #f97316;
+  }
+
+  /* Domains - Pink */
+  .skill-tag[data-category="Domains"] {
+    background: rgba(236, 72, 153, 0.15);
+    border: 1px solid rgba(236, 72, 153, 0.5);
+  }
+
+  .skill-tag[data-category="Domains"]:hover {
+    background: #ec4899;
+    color: white;
+    border-color: #ec4899;
+  }
+
   .skill-tag:hover {
     transform: translateY(-2px);
-    background: var(--tertiary);
-    color: var(--theme);
-    border-color: var(--tertiary);
   }
 
   .project-links {
@@ -359,7 +438,31 @@
 
     // Get projects data from inline script
     const projectsData = JSON.parse(document.getElementById('projects-data').textContent);
+    // Skill Categories
+    const skillCategories = {
+      'Languages': ['Python', 'C#', 'JavaScript', 'TypeScript', 'Solidity'],
+      'Frameworks': ['Vue', 'Vue 3', 'React', 'Express', 'Node.js', 'Unity', 'ASP.NET Core', 'TensorFlow', 'PyTorch', 'Flask', 'WPF'],
+      'Databases': ['MongoDB', 'PostgreSQL', 'SQL Server', 'MSSQL'],
+      'Tools': ['Docker', 'Kinect', 'Web3.js', 'OpenAI', 'OAuth', 'Google Gemini', 'Ethereum', 'Hangfire', 'Leap Motion', 'SECS/GEM', 'YOLO'],
+      'Domains': ['AI', 'Computer Vision', 'Machine Vision', 'Game Design', 'Game Development', 'Image Processing', 'Deep Learning', 'CNN', 'NLP', 'Object Detection', 'Template Matching', 'Motion Control', '3D Modeling', 'Smart Contracts', 'RESTful API', 'LINE API', 'MATLAB']
+    };
 
+    // Category colors
+    const categoryColors = {
+      'Languages': { bg: 'rgba(59, 130, 246, 0.15)', border: 'rgba(59, 130, 246, 0.5)', hover: '#3b82f6' },
+      'Frameworks': { bg: 'rgba(147, 51, 234, 0.15)', border: 'rgba(147, 51, 234, 0.5)', hover: '#9333ea' },
+      'Databases': { bg: 'rgba(16, 185, 129, 0.15)', border: 'rgba(16, 185, 129, 0.5)', hover: '#10b981' },
+      'Tools': { bg: 'rgba(249, 115, 22, 0.15)', border: 'rgba(249, 115, 22, 0.5)', hover: '#f97316' },
+      'Domains': { bg: 'rgba(236, 72, 153, 0.15)', border: 'rgba(236, 72, 153, 0.5)', hover: '#ec4899' }
+    };
+
+    // Get category for a skill
+    function getSkillCategory(skill) {
+      for (const [category, skills] of Object.entries(skillCategories)) {
+        if (skills.includes(skill)) return category;
+      }
+      return 'Domains'; // Default category
+    }
     // State
     let selectedYear = null;
     let selectedSkills = new Set();
@@ -398,14 +501,31 @@
         yearFilters.appendChild(chip);
       });
 
-      // Render skill filters
-      allSkills.forEach(skill => {
-        const chip = document.createElement('button');
-        chip.className = 'filter-chip skill-chip';
-        chip.textContent = skill;
-        chip.dataset.skill = skill;
-        chip.addEventListener('click', () => toggleSkill(skill));
-        skillFilters.appendChild(chip);
+      // Render skill filters by category
+      Object.keys(skillCategories).forEach(category => {
+        const categorySkills = allSkills.filter(skill => getSkillCategory(skill) === category);
+        if (categorySkills.length === 0) return;
+
+        // Category label
+        const categoryLabel = document.createElement('div');
+        categoryLabel.className = 'category-label';
+        categoryLabel.textContent = category;
+        categoryLabel.dataset.category = category;
+        skillFilters.appendChild(categoryLabel);
+
+        // Skills in this category
+        const categoryContainer = document.createElement('div');
+        categoryContainer.className = 'category-skills';
+        categorySkills.forEach(skill => {
+          const chip = document.createElement('button');
+          chip.className = 'filter-chip skill-chip';
+          chip.textContent = skill;
+          chip.dataset.skill = skill;
+          chip.dataset.category = category;
+          chip.addEventListener('click', () => toggleSkill(skill));
+          categoryContainer.appendChild(chip);
+        });
+        skillFilters.appendChild(categoryContainer);
       });
     }
 
@@ -484,9 +604,10 @@
           ${(project.skills && project.skills.length > 0) ? `
             <div class="project-skills">
               ${project.skills.map(skill => {
-          const cleanSkill = skill.replace(/['"]/g, '');
-          return `<span class="skill-tag" onclick="event.stopPropagation(); handleSkillClick('${cleanSkill}')">${cleanSkill}</span>`;
-        }).join('')}
+        const cleanSkill = skill.replace(/['"]/g, '');
+        const category = getSkillCategory(cleanSkill);
+        return `<span class="skill-tag" data-category="${category}" onclick="event.stopPropagation(); handleSkillClick('${cleanSkill}')">${cleanSkill}</span>`;
+      }).join('')}
             </div>
           ` : ''}
           
