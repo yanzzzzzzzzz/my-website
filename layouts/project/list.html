@@ -64,17 +64,6 @@
         {{- end -}}
       ],
       "summary": "{{ .Params.summary | default .Summary | plainify }}",
-      "cover": "{{ .Params.cover | default (printf "/images/%s/cover.png" (path.Base .File.Path | strings.TrimSuffix ".md")) }}",
-      "images": [
-        {{- $imageFirst := true -}}
-        {{- if .Params.images -}}
-          {{- range .Params.images -}}
-            {{- if not $imageFirst -}},{{- end -}}
-            {{- $imageFirst = false -}}
-            "{{ . }}"
-          {{- end -}}
-        {{- end -}}
-      ],
       "github": "{{ .Params.github | default "" }}",
       "demo": "{{ .Params.demo | default "" }}"
     }
@@ -204,23 +193,6 @@
     font-size: 0.9rem;
     color: var(--secondary);
     font-weight: 500;
-  }
-
-  /* Project Cover Image */
-  .project-cover {
-    position: relative;
-    width: 100%;
-    height: 200px;
-    overflow: hidden;
-    border-radius: 12px 12px 0 0;
-    background: var(--code-bg);
-  }
-
-  .cover-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    cursor: pointer !important;
   }
 
   /* Projects Grid */
@@ -501,15 +473,10 @@
 
       grid.innerHTML = projects.map((project, index) => `
       <article class="project-card" onclick="window.location.href='${project.url}'">
-        ${project.cover ?
-          `<div class="project-cover">
-            <img src="${project.cover}" alt="${project.title}" class="cover-image" data-no-zoom="true" />
-          </div>` :
-          `<div class="project-fallback">
-            <div class="fallback-title">${project.title}</div>
-            <div class="fallback-year">${project.year}</div>
-          </div>`
-        }
+        <div class="project-fallback">
+          <div class="fallback-title">${project.title}</div>
+          <div class="fallback-year">${project.year}</div>
+        </div>
         <div class="project-content">
           <h3 class="project-title">${project.title}</h3>
           <p class="project-summary">${project.summary}</p>
@@ -565,16 +532,6 @@
     // Initialize
     initFilters();
     filterProjects();
-
-    // Remove zoom functionality from dynamically created cover images
-    const observer = new MutationObserver(() => {
-      document.querySelectorAll('.cover-image').forEach(img => {
-        img.style.cursor = 'pointer';
-        const newImg = img.cloneNode(true);
-        img.parentNode.replaceChild(newImg, img);
-      });
-    });
-    observer.observe(document.querySelector('.projects-grid'), { childList: true });
   })();
 </script>
 {{ end }}

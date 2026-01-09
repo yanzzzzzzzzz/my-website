@@ -3,8 +3,6 @@ title: Podcast Summary
 year: 2025
 skills: ["Vue", "Express", "Node.js", "AI", "OpenAI"]
 summary: Full-stack app for summarizing Apple Podcast episodes using AI, with focus on business & investment topics. Automatically extracts stock mentions and market sentiment.
-cover: /images/podcast-summary/cover.png
-imageCount: 2
 github: ""
 demo: ""
 ---
