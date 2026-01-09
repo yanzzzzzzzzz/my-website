@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
     modal.appendChild(modalImg);
 
     document.querySelectorAll('img').forEach(img => {
-        if (!img.closest('.profile_inner')) {
+        if (!img.closest('.profile_inner') && !img.hasAttribute('data-no-zoom')) {
             img.style.cursor = 'zoom-in';
             img.addEventListener('click', function() {
                 modal.style.display = 'block';

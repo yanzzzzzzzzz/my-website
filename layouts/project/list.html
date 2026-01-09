@@ -1,0 +1,580 @@
+{{ define "main" }}
+<div class="projects-page">
+  <div class="projects-header">
+    <h1>{{ .Title }}</h1>
+    <p class="subtitle">✨ Explore my work ✨</p>
+  </div>
+
+  <!-- Filter Bar -->
+  <div class="filter-bar">
+    <div class="filter-section">
+      <label class="filter-label">Year</label>
+      <div class="year-filters" id="yearFilters">
+        <!-- Populated by JavaScript -->
+      </div>
+    </div>
+
+    <div class="filter-section">
+      <label class="filter-label">Skills</label>
+      <div class="skill-filters" id="skillFilters">
+        <!-- Populated by JavaScript -->
+      </div>
+    </div>
+
+    <div class="filter-actions">
+      <button id="clearFilters" class="clear-btn">Clear filters</button>
+      <span id="resultCount" class="result-count"></span>
+    </div>
+  </div>
+
+  <!-- Projects Grid -->
+  <div class="projects-grid" id="projectsGrid">
+    <!-- Populated by JavaScript -->
+  </div>
+
+  <!-- Empty State -->
+  <div class="empty-state" id="emptyState" style="display: none;">
+    <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="60" cy="60" r="50" stroke="currentColor" stroke-width="2" opacity="0.2" />
+      <path d="M45 60L55 70L75 50" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
+        opacity="0.3" />
+    </svg>
+    <h3>No projects found</h3>
+    <p>Try adjusting your filters to see more results</p>
+  </div>
+</div>
+
+<!-- Inline Projects Data -->
+<script id="projects-data" type="application/json">
+[
+  {{- $first := true -}}
+  {{- range .Pages -}}
+    {{- if not $first -}},{{- end -}}
+    {{- $first = false -}}
+    {
+      "title": "{{ .Title }}",
+      "url": "{{ .RelPermalink }}",
+      "year": {{ .Params.year | default 2025 }},
+      "skills": [
+        {{- $skillFirst := true -}}
+        {{- range .Params.skills -}}
+          {{- if not $skillFirst -}},{{- end -}}
+          {{- $skillFirst = false -}}
+          "{{ . }}"
+        {{- end -}}
+      ],
+      "summary": "{{ .Params.summary | default .Summary | plainify }}",
+      "cover": "{{ .Params.cover | default (printf "/images/%s/cover.png" (path.Base .File.Path | strings.TrimSuffix ".md")) }}",
+      "images": [
+        {{- $imageFirst := true -}}
+        {{- if .Params.images -}}
+          {{- range .Params.images -}}
+            {{- if not $imageFirst -}},{{- end -}}
+            {{- $imageFirst = false -}}
+            "{{ . }}"
+          {{- end -}}
+        {{- end -}}
+      ],
+      "github": "{{ .Params.github | default "" }}",
+      "demo": "{{ .Params.demo | default "" }}"
+    }
+  {{- end -}}
+]
+</script>
+
+<style>
+  /* Override theme width constraints for projects page */
+  .main {
+    --main-width: 100%;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  /* Projects Page Styles */
+  .projects-page {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 2rem 3rem;
+  }
+
+  .projects-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .projects-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--tertiary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .projects-header .subtitle {
+    color: var(--secondary);
+    font-size: 1.1rem;
+    opacity: 0.8;
+  }
+
+  /* Filter Bar */
+  .filter-bar {
+    background: var(--entry);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .filter-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .filter-label {
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .year-filters,
+  .skill-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .filter-chip {
+    padding: 0.4rem 0.85rem;
+    border: 1px solid var(--border);
+    background: var(--code-bg);
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: var(--primary);
+    white-space: nowrap;
+  }
+
+  .filter-chip:hover {
+    border-color: var(--tertiary);
+    transform: translateY(-2px);
+  }
+
+  .filter-chip.active {
+    background: var(--tertiary);
+    color: var(--theme);
+    border-color: var(--tertiary);
+  }
+
+  .filter-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .clear-btn {
+    padding: 0.5rem 1.25rem;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    color: var(--primary);
+    transition: all 0.2s ease;
+  }
+
+  .clear-btn:hover {
+    background: var(--tertiary);
+    color: var(--theme);
+    border-color: var(--tertiary);
+  }
+
+  .result-count {
+    font-size: 0.9rem;
+    color: var(--secondary);
+    font-weight: 500;
+  }
+
+  /* Project Cover Image */
+  .project-cover {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 12px 12px 0 0;
+    background: var(--code-bg);
+  }
+
+  .cover-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer !important;
+  }
+
+  /* Projects Grid */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .project-card {
+    background: var(--entry);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    border-color: var(--tertiary);
+  }
+
+  .project-image {
+    display: none;
+  }
+
+  .project-fallback {
+    display: none;
+  }
+
+  .project-content {
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  .project-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem 0;
+    color: var(--primary);
+    line-height: 1.3;
+  }
+
+  .project-summary {
+    font-size: 0.85rem;
+    color: var(--secondary);
+    line-height: 1.5;
+    margin-bottom: 0.75rem;
+    flex-grow: 1;
+  }
+
+  .project-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .skill-tag {
+    padding: 0.2rem 0.5rem;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(147, 51, 234, 0.15));
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    border-radius: 10px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--primary);
+    transition: all 0.2s ease;
+    cursor: pointer;
+  }
+
+  .skill-tag:hover {
+    transform: translateY(-2px);
+    background: var(--tertiary);
+    color: var(--theme);
+    border-color: var(--tertiary);
+  }
+
+  .project-links {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .project-link {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.35rem 0.65rem;
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--tertiary);
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .project-link:hover {
+    background: var(--tertiary);
+    color: var(--theme);
+    border-color: var(--tertiary);
+    transform: translateY(-2px);
+  }
+
+  /* Empty State */
+  .empty-state {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: var(--secondary);
+  }
+
+  .empty-state svg {
+    margin-bottom: 1.5rem;
+    color: var(--tertiary);
+  }
+
+  .empty-state h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary);
+  }
+
+  .empty-state p {
+    opacity: 0.7;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .projects-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .projects-header h1 {
+      font-size: 2rem;
+    }
+
+    .filter-actions {
+      flex-direction: column;
+      gap: 1rem;
+      align-items: stretch;
+    }
+
+    .result-count {
+      text-align: center;
+    }
+  }
+</style>
+
+<script>
+  // Projects Filtering Logic
+  (function () {
+    'use strict';
+
+    // Get projects data from inline script
+    const projectsData = JSON.parse(document.getElementById('projects-data').textContent);
+
+    // State
+    let selectedYear = null;
+    let selectedSkills = new Set();
+
+    // Get all unique years and skills
+    const allYears = [...new Set(projectsData.map(p => p.year))].sort((a, b) => b - a);
+    const allSkills = [...new Set(projectsData.flatMap(p => (p.skills || []).map(s => s.replace(/['"]/g, ''))))].sort();
+
+    // Default: show last year only
+    const currentYear = new Date().getFullYear();
+    const lastYear = Math.max(...allYears.filter(y => y <= currentYear));
+    selectedYear = lastYear;
+
+    // Initialize filters
+    function initFilters() {
+      const yearFilters = document.getElementById('yearFilters');
+      const skillFilters = document.getElementById('skillFilters');
+
+      // Render year filters with ALL option
+      const allYearChip = document.createElement('button');
+      allYearChip.className = 'filter-chip year-chip';
+      allYearChip.textContent = 'ALL';
+      allYearChip.dataset.year = 'all';
+      allYearChip.addEventListener('click', () => selectYear('all'));
+      yearFilters.appendChild(allYearChip);
+
+      allYears.forEach(year => {
+        const chip = document.createElement('button');
+        chip.className = 'filter-chip year-chip';
+        chip.textContent = year;
+        chip.dataset.year = year;
+        if (year === selectedYear) {
+          chip.classList.add('active');
+        }
+        chip.addEventListener('click', () => selectYear(year));
+        yearFilters.appendChild(chip);
+      });
+
+      // Render skill filters
+      allSkills.forEach(skill => {
+        const chip = document.createElement('button');
+        chip.className = 'filter-chip skill-chip';
+        chip.textContent = skill;
+        chip.dataset.skill = skill;
+        chip.addEventListener('click', () => toggleSkill(skill));
+        skillFilters.appendChild(chip);
+      });
+    }
+
+    // Year selection (single select)
+    function selectYear(year) {
+      selectedYear = year;
+      document.querySelectorAll('.year-chip').forEach(chip => {
+        const chipYear = chip.dataset.year;
+        chip.classList.toggle('active',
+          chipYear === 'all' ? year === 'all' : parseInt(chipYear) === year
+        );
+      });
+      filterProjects();
+    }
+
+    // Skill selection (multi-select)
+    function toggleSkill(skill) {
+      const cleanSkill = skill.replace(/['"]/g, '');
+      if (selectedSkills.has(cleanSkill)) {
+        selectedSkills.delete(cleanSkill);
+      } else {
+        selectedSkills.add(cleanSkill);
+      }
+
+      document.querySelectorAll('.skill-chip').forEach(chip => {
+        chip.classList.toggle('active', selectedSkills.has(chip.dataset.skill));
+      });
+
+      filterProjects();
+    }
+
+    // Filter projects
+    function filterProjects() {
+      const filtered = projectsData.filter(project => {
+        // Year filter
+        if (selectedYear !== 'all' && project.year !== selectedYear) return false;
+
+        // Skill filter (optional, OR logic)
+        if (selectedSkills.size > 0) {
+          const projectSkills = (project.skills || []).map(s => s.replace(/['"]/g, ''));
+          const hasMatchingSkill = projectSkills.some(skill => selectedSkills.has(skill));
+          if (!hasMatchingSkill) return false;
+        }
+
+        return true;
+      });
+
+      renderProjects(filtered);
+      updateResultCount(filtered.length);
+    }
+
+    // Render projects
+    function renderProjects(projects) {
+      const grid = document.getElementById('projectsGrid');
+      const emptyState = document.getElementById('emptyState');
+
+      if (projects.length === 0) {
+        grid.style.display = 'none';
+        emptyState.style.display = 'block';
+        return;
+      }
+
+      grid.style.display = 'grid';
+      emptyState.style.display = 'none';
+
+      grid.innerHTML = projects.map((project, index) => `
+      <article class="project-card" onclick="window.location.href='${project.url}'">
+        ${project.cover ?
+          `<div class="project-cover">
+            <img src="${project.cover}" alt="${project.title}" class="cover-image" data-no-zoom="true" />
+          </div>` :
+          `<div class="project-fallback">
+            <div class="fallback-title">${project.title}</div>
+            <div class="fallback-year">${project.year}</div>
+          </div>`
+        }
+        <div class="project-content">
+          <h3 class="project-title">${project.title}</h3>
+          <p class="project-summary">${project.summary}</p>
+          
+          ${(project.skills && project.skills.length > 0) ? `
+            <div class="project-skills">
+              ${project.skills.map(skill => {
+          const cleanSkill = skill.replace(/['"]/g, '');
+          return `<span class="skill-tag" onclick="event.stopPropagation(); handleSkillClick('${cleanSkill}')">${cleanSkill}</span>`;
+        }).join('')}
+            </div>
+          ` : ''}
+          
+          ${project.github || project.demo ? `
+            <div class="project-links">
+              ${project.github ? `<a href="${project.github}" class="project-link" onclick="event.stopPropagation()" target="_blank">GitHub →</a>` : ''}
+              ${project.demo ? `<a href="${project.demo}" class="project-link" onclick="event.stopPropagation()" target="_blank">Demo →</a>` : ''}
+            </div>
+          ` : ''}
+        </div>
+      </article>
+    `).join('');
+    }
+
+    // Handle skill tag click in cards
+    window.handleSkillClick = function (skill) {
+      toggleSkill(skill);
+    };
+
+    // Update result count
+    function updateResultCount(count) {
+      const resultCount = document.getElementById('resultCount');
+      resultCount.textContent = `Showing ${count} project${count !== 1 ? 's' : ''}`;
+    }
+
+    // Clear filters
+    document.getElementById('clearFilters').addEventListener('click', () => {
+      selectedYear = lastYear;
+      selectedSkills.clear();
+
+      document.querySelectorAll('.filter-chip').forEach(chip => {
+        chip.classList.remove('active');
+      });
+
+      const lastYearChip = document.querySelector(`[data-year="${lastYear}"]`);
+      if (lastYearChip) {
+        lastYearChip.classList.add('active');
+      }
+
+      filterProjects();
+    });
+
+    // Initialize
+    initFilters();
+    filterProjects();
+
+    // Remove zoom functionality from dynamically created cover images
+    const observer = new MutationObserver(() => {
+      document.querySelectorAll('.cover-image').forEach(img => {
+        img.style.cursor = 'pointer';
+        const newImg = img.cloneNode(true);
+        img.parentNode.replaceChild(newImg, img);
+      });
+    });
+    observer.observe(document.querySelector('.projects-grid'), { childList: true });
+  })();
+</script>
+{{ end }}
