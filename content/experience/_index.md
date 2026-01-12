@@ -54,34 +54,30 @@ title: "Experience"
 
   <div class="timeline-item">
     <div class="timeline-date">Sep 2022 – Present</div>
-    <div class="timeline-title">🔧 Backend Engineer, Nexify Limited, Taipei</div>
+    <div class="timeline-title">🔧 Core Backend Engineer, Nexify Limited, Taipei</div>
     <div>
+      <p>Building and maintaining large-scale government systems using C# / .NET 6–8, SQL Server, EF Core, and NexTore framework. End-to-end backend development across complex workflows, legal/financial documents, and multi-role access control.</p>
       <div class="skills">
         <span class="skill-badge">C#</span>
-        <span class="skill-badge">.NET 8</span>
-        <span class="skill-badge">Entity Framework</span>
-        <span class="skill-badge">LINQ</span>
-        <span class="skill-badge">DevExpress</span>
-        <span class="skill-badge">MS Test</span>
+        <span class="skill-badge">.NET 6-8</span>
+        <span class="skill-badge">SQL Server</span>
+        <span class="skill-badge">EF Core</span>
         <span class="skill-badge">Vue 3</span>
-        <span class="skill-badge">Composition API</span>
-        <span class="skill-badge">PrimeVue</span>
-        <span class="skill-badge">CI/CD</span>
-        <span class="skill-badge">PowerShell</span>
-        <span class="skill-badge">Teams API</span>
+        <span class="skill-badge">DevExpress</span>
+        <span class="skill-badge">Jenkins</span>
+        <span class="skill-badge">Nginx</span>
+        <span class="skill-badge">Hangfire</span>
       </div>
       <p><strong>Backend Development</strong><br/>
-      • Developed RESTful APIs using C# (.NET 8) with LINQ and EF Core<br/>
-      • Implemented multi-signature PDF feature with DevExpress text positioning<br/>
-      • Designed form generation system with support for text replacement, table/block duplication, Word-to-PDF conversion, and multi-file merging<br/>
-      • Enhanced system reliability with MS Test unit testing<br/>
-      <p><strong>Frontend Support</strong><br/>
-      • Built feature modules with Vue 3 Composition API and PrimeVue<br/>
-      • Implemented pagination, lazy loading, and dynamic data processing<br/>
+      • Designed APIs, business logic, and database schemas for government systems (Official Receiver's Office, Building Department, Housing Authority)<br/>
+      • Developed bankruptcy applications, cashbook, account review, and creditor communication modules<br/>
+      • Optimized LINQ queries and stored procedures for performance and data integrity<br/>
+      <p><strong>Document Automation & e-Signature</strong><br/>
+      • Built Word/PDF generation pipeline with field mapping, template merging, and multi-file assembly<br/>
+      • Implemented dynamic PDF e-signature using DevExpress with multi-party signature support<br/>
       <p><strong>DevOps</strong><br/>
-      • Created CI/CD pipelines for Git Pull, MS Build, and PowerShell automation<br/>
-      • Integrated Teams API for real-time deployment notifications<br/>
-      • Scheduled automated builds for continuous delivery
+      • Set up Jenkins CI/CD pipelines for automated deployment and environment switching<br/>
+      • Upgraded services from .NET 6 → .NET 8 and managed multi-environment deployments
     </div>
   </div>
 
