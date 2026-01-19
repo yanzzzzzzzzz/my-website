@@ -1,6 +1,7 @@
 +++
 date = '2026-01-19T10:13:24+08:00'
 title = 'Template Method Pattern'
+tags = ["Design Patterns"]
 +++
 
 
