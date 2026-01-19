@@ -3,10 +3,19 @@
   <div class="projects-header">
     <h1>{{ .Title }}</h1>
     <p class="subtitle">✨ Explore my work ✨</p>
+    <button class="filter-toggle-btn" id="filterToggleBtn">
+      <svg class="filter-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <path d="M2 4h16M5 10h10M8 16h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <span>Filters</span>
+      <svg class="chevron-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
   </div>
 
   <!-- Filter Bar -->
-  <div class="filter-bar">
+  <div class="filter-bar hidden" id="filterBar">
     <div class="filter-section">
       <label class="filter-label">Year</label>
       <div class="year-filters" id="yearFilters">
@@ -15,8 +24,13 @@
     </div>
 
     <div class="filter-section">
-      <label class="filter-label">Skills</label>
-      <div class="skill-filters" id="skillFilters">
+      <button class="filter-toggle" id="skillFilterToggle">
+        <span class="filter-label">Skills</span>
+        <svg class="toggle-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <div class="skill-filters collapsed" id="skillFilters">
         <!-- Populated by JavaScript -->
       </div>
     </div>
@@ -88,7 +102,42 @@
 
   .projects-header {
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
+    position: relative;
+  }
+
+  .filter-toggle-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    margin-top: 1rem;
+    background: var(--entry);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    color: var(--primary);
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .filter-toggle-btn:hover {
+    border-color: var(--tertiary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .filter-toggle-btn .filter-icon {
+    color: var(--tertiary);
+  }
+
+  .filter-toggle-btn .chevron-icon {
+    transition: transform 0.3s ease;
+  }
+
+  .filter-toggle-btn.active .chevron-icon {
+    transform: rotate(180deg);
   }
 
   .projects-header h1 {
@@ -116,12 +165,47 @@
     display: flex;
     flex-direction: column;
     gap: 1.25rem;
+    max-height: 2000px;
+    overflow: hidden;
+    transition: max-height 0.4s ease, opacity 0.3s ease, margin 0.3s ease;
+  }
+
+  .filter-bar.hidden {
+    max-height: 0;
+    opacity: 0;
+    margin-bottom: 0;
+    padding: 0;
+    border: none;
   }
 
   .filter-section {
     display: flex;
     flex-direction: column;
     gap: 0.6rem;
+  }
+
+  .filter-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+  }
+
+  .filter-toggle:hover {
+    opacity: 0.7;
+  }
+
+  .toggle-icon {
+    transition: transform 0.3s ease;
+  }
+
+  .filter-toggle.expanded .toggle-icon {
+    transform: rotate(180deg);
   }
 
   .filter-label {
@@ -141,7 +225,34 @@
   .skill-filters {
     display: flex;
     flex-direction: column;
-    gap: 0.8rem;
+    gap: 0.5rem;
+    max-height: 2000px;
+    overflow: hidden;
+    transition: max-height 0.4s ease, opacity 0.3s ease;
+  }
+
+  .skill-filters.collapsed {
+    max-height: 0;
+    opacity: 0;
+  }
+
+  .category-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .category-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    padding: 0.3rem 0;
+    transition: opacity 0.2s ease;
+  }
+
+  .category-header:hover {
+    opacity: 0.7;
   }
 
   .category-label {
@@ -150,17 +261,30 @@
     color: var(--secondary);
     text-transform: uppercase;
     letter-spacing: 0.8px;
-    margin-top: 0.5rem;
   }
 
-  .category-label:first-child {
-    margin-top: 0;
+  .category-toggle {
+    width: 14px;
+    height: 14px;
+    transition: transform 0.2s ease;
+  }
+
+  .category-header.expanded .category-toggle {
+    transform: rotate(180deg);
   }
 
   .category-skills {
     display: flex;
     flex-wrap: wrap;
     gap: 0.4rem;
+    max-height: 500px;
+    overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.2s ease;
+  }
+
+  .category-skills.collapsed {
+    max-height: 0;
+    opacity: 0;
   }
 
   .filter-chip {
@@ -288,64 +412,69 @@
     border-radius: 10px;
     font-size: 0.7rem;
     font-weight: 600;
+    color: var(--primary);
     transition: all 0.2s ease;
     cursor: pointer;
-    color: white;
   }
 
   /* Languages - Blue */
   .skill-tag[data-category="Languages"] {
-    background: rgba(59, 130, 246, 0.3);
-    border: 1px solid #3b82f6;
+    background: rgba(59, 130, 246, 0.15);
+    border: 1px solid rgba(59, 130, 246, 0.5);
   }
 
   .skill-tag[data-category="Languages"]:hover {
     background: #3b82f6;
-    border-color: #60a5fa;
+    color: white;
+    border-color: #3b82f6;
   }
 
   /* Frameworks - Purple */
   .skill-tag[data-category="Frameworks"] {
-    background: rgba(147, 51, 234, 0.3);
-    border: 1px solid #9333ea;
+    background: rgba(147, 51, 234, 0.15);
+    border: 1px solid rgba(147, 51, 234, 0.5);
   }
 
   .skill-tag[data-category="Frameworks"]:hover {
     background: #9333ea;
-    border-color: #c084fc;
+    color: white;
+    border-color: #9333ea;
   }
 
   /* Databases - Green */
   .skill-tag[data-category="Databases"] {
-    background: rgba(16, 185, 129, 0.3);
-    border: 1px solid #10b981;
+    background: rgba(16, 185, 129, 0.15);
+    border: 1px solid rgba(16, 185, 129, 0.5);
   }
 
   .skill-tag[data-category="Databases"]:hover {
     background: #10b981;
-    border-color: #34d399;
+    color: white;
+    border-color: #10b981;
   }
 
   /* Tools - Orange */
   .skill-tag[data-category="Tools"] {
-    background: rgba(249, 115, 22, 0.3);
-    border: 1px solid #f97316;
+    background: rgba(249, 115, 22, 0.15);
+    border: 1px solid rgba(249, 115, 22, 0.5);
   }
 
   .skill-tag[data-category="Tools"]:hover {
     background: #f97316;
-    border-color: #fb923c;
+    color: white;
+    border-color: #f97316;
   }
 
   /* Domains - Pink */
   .skill-tag[data-category="Domains"] {
-    background: rgba(236, 72, 153, 0.3);
-    border: 1px solid #ec4899;
+    background: rgba(236, 72, 153, 0.15);
+    border: 1px solid rgba(236, 72, 153, 0.5);
   }
 
   .skill-tag[data-category="Domains"]:hover {
     background: #ec4899;
-    border-color: #f472b6;
+    color: white;
+    border-color: #ec4899;
   }
 
   .skill-tag:hover {
@@ -465,10 +594,8 @@
     const allYears = [...new Set(projectsData.map(p => p.year))].sort((a, b) => b - a);
     const allSkills = [...new Set(projectsData.flatMap(p => (p.skills || []).map(s => s.replace(/['"]/g, ''))))].sort();
 
-    // Default: show last year only
-    const currentYear = new Date().getFullYear();
-    const lastYear = Math.max(...allYears.filter(y => y <= currentYear));
-    selectedYear = lastYear;
+    // Default: show all projects
+    selectedYear = 'all';
 
     // Initialize filters
     function initFilters() {
@@ -488,24 +615,36 @@
         chip.className = 'filter-chip year-chip';
         chip.textContent = year;
         chip.dataset.year = year;
-        if (year === selectedYear) {
-          chip.classList.add('active');
-        }
         chip.addEventListener('click', () => selectYear(year));
         yearFilters.appendChild(chip);
       });
+
+      // Set ALL as active by default
+      allYearChip.classList.add('active');
 
       // Render skill filters by category
       Object.keys(skillCategories).forEach(category => {
         const categorySkills = allSkills.filter(skill => getSkillCategory(skill) === category);
         if (categorySkills.length === 0) return;
 
-        // Category label
-        const categoryLabel = document.createElement('div');
-        categoryLabel.className = 'category-label';
-        categoryLabel.textContent = category;
-        categoryLabel.dataset.category = category;
-        skillFilters.appendChild(categoryLabel);
+        // Category section wrapper
+        const categorySection = document.createElement('div');
+        categorySection.className = 'category-section';
+
+        // Category header (clickable)
+        const categoryHeader = document.createElement('div');
+        categoryHeader.className = 'category-header expanded';
+        categoryHeader.innerHTML = `
+          <span class="category-label">${category}</span>
+          <svg class="category-toggle" width="14" height="14" viewBox="0 0 16 16" fill="none">
+            <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        `;
+        categoryHeader.addEventListener('click', (e) => {
+          e.stopPropagation();
+          toggleCategory(categoryHeader, categoryContainer);
+        });
+        categorySection.appendChild(categoryHeader);
 
         // Skills in this category
         const categoryContainer = document.createElement('div');
@@ -519,8 +658,30 @@
           chip.addEventListener('click', () => toggleSkill(skill));
           categoryContainer.appendChild(chip);
         });
-        skillFilters.appendChild(categoryContainer);
+        categorySection.appendChild(categoryContainer);
+        skillFilters.appendChild(categorySection);
       });
+
+      // Add skill filter toggle functionality
+      const skillFilterToggle = document.getElementById('skillFilterToggle');
+      skillFilterToggle.addEventListener('click', () => {
+        skillFilterToggle.classList.toggle('expanded');
+        skillFilters.classList.toggle('collapsed');
+      });
+
+      // Add main filter bar toggle functionality
+      const filterToggleBtn = document.getElementById('filterToggleBtn');
+      const filterBar = document.getElementById('filterBar');
+      filterToggleBtn.addEventListener('click', () => {
+        filterToggleBtn.classList.toggle('active');
+        filterBar.classList.toggle('hidden');
+      });
+    }
+
+    // Toggle category collapse
+    function toggleCategory(header, container) {
+      header.classList.toggle('expanded');
+      container.classList.toggle('collapsed');
     }
 
     // Year selection (single select)
@@ -575,6 +736,9 @@
     function renderProjects(projects) {
       const grid = document.getElementById('projectsGrid');
       const emptyState = document.getElementById('emptyState');
+
+      // Sort projects by year (newest first)
+      projects.sort((a, b) => b.year - a.year);
 
       if (projects.length === 0) {
         grid.style.display = 'none';

@@ -1,0 +1,41 @@
+/* Mermaid Dark Mode 樣式強化 */
+.dark .mermaid {
+  filter: brightness(1.2) contrast(1.1);
+}
+
+.dark .mermaid .edgePath .path,
+.dark .mermaid .flowchart-link {
+  stroke: #d0e7ff !important;
+}
+
+.dark .mermaid .arrowheadPath {
+  fill: #d0e7ff !important;
+  stroke: #d0e7ff !important;
+}
+
+.dark .mermaid .marker {
+  fill: #d0e7ff !important;
+  stroke: #d0e7ff !important;
+}
+
+.dark .mermaid line,
+.dark .mermaid path.relation {
+  stroke: #d0e7ff !important;
+}
+
+.dark .mermaid polygon {
+  fill: #d0e7ff !important;
+  stroke: #d0e7ff !important;
+}
+
+/* 強制設定所有箭頭相關元素 */
+.dark .mermaid [id*="arrowhead"],
+.dark .mermaid [class*="arrowhead"],
+.dark .mermaid marker path,
+.dark .mermaid marker polygon,
+.dark .mermaid defs marker path,
+.dark .mermaid defs marker polygon {
+  fill: #d0e7ff !important;
+  stroke: #d0e7ff !important;
+  stroke-width: 1px !important;
+}

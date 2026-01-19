@@ -28,5 +28,61 @@ the global layouts. */ -}}
 <!-- Custom CSS -->
 <link rel="stylesheet" href="/css/custom.css">
 
-{{- /* Head custom content area end */ -}}
-<script src="/js/image-zoom.js"></script>
+<!-- Mermaid Support -->
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>
+  // 偵測當前主題
+  const getTheme = () => {
+    if (document.body.classList.contains('dark')) {
+      return {
+        theme: 'dark',
+        themeVariables: {
+          primaryColor: '#5a8cc9',
+          primaryTextColor: '#ffffff',
+          primaryBorderColor: '#90c3ff',
+          lineColor: '#d0e7ff',
+          secondaryColor: '#4a6b99',
+          tertiaryColor: '#3a5170',
+          background: '#1e1e1e',
+          mainBkg: '#3d4f66',
+          secondBkg: '#4d6a8d',
+          tertiaryBkg: '#5a8cc9',
+          textColor: '#ffffff',
+          border1: '#90c3ff',
+          border2: '#d0e7ff',
+          arrowheadColor: '#d0e7ff',
+          edgeLabelBackground: '#2d3748',
+          clusterBkg: '#2d3748',
+          clusterBorder: '#90c3ff'
+        }
+      };
+    }
+    return { theme: 'default' };
+  };
+
+  // 初始化 mermaid
+  mermaid.initialize({
+    startOnLoad: true,
+    ...getTheme()
+  });
+
+  // 監聽主題切換
+  const observer = new MutationObserver(() => {
+    mermaid.initialize({
+      startOnLoad: true,
+      ...getTheme()
+    });
+    // 重新渲染所有 mermaid 圖表
+    document.querySelectorAll('.mermaid').forEach((element, index) => {
+      element.removeAttribute('data-processed');
+    });
+    mermaid.run();
+  });
+
+  observer.observe(document.body, {
+    attributes: true,
+    attributeFilter: ['class']
+  });
+
+
+  <script src="/js/image-zoom.js"></script>
