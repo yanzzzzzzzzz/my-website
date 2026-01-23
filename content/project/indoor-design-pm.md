@@ -1,104 +1,104 @@
 ---
-title: Indoor Design Project Management
+title: 室內設計專案管理系統
 year: 2021
 skills: ["Vue", "C#", "ASP.NET Core", "MSSQL", "RESTful API"]
-summary: Designed a project management system for interior design studios, including task tracking and file management.
+summary: 為室內設計工作室設計的專案管理系統，包含任務追蹤與檔案管理功能。
 images: ["/images/indoor-design-pm/1.png"]
 github: ""
 demo: ""
 ---
 
-## Overview
+## 專案概覽
 
-A comprehensive project management platform tailored for interior design studios to streamline project workflows, client communication, and resource management.
+一個專為室內設計工作室量身打造的全方位專案管理平台，旨在簡化專案工作流程、客戶溝通與資源管理。
 
-## Features
+## 功能特色
 
-### Project Management
+### 專案管理
 
-- Project timeline and milestones
-- Task assignment and tracking
-- Resource allocation
-- Budget management
-- Progress reporting
+- 專案時間軸與里程碑
+- 任務指派與追蹤
+- 資源分配
+- 預算管理
+- 進度報告
 
-### File Management
+### 檔案管理
 
-- Design file versioning
-- Client document storage
-- Shared file access
-- Cloud storage integration
-- Preview for common file formats
+- 設計檔案版本控制
+- 客戶文件儲存
+- 共享檔案存取
+- 雲端儲存整合
+- 常用檔案格式預覽
 
-### Client Portal
+### 客戶端平台
 
-- Project status visibility
-- Design approval workflow
-- Direct communication channel
-- Invoice and payment tracking
+- 專案狀態檢視
+- 設計簽核流程
+- 直接溝通管道
+- 發票與付款追蹤
 
-### Team Collaboration
+### 團隊協作
 
-- Real-time updates
-- Comment and feedback system
-- Role-based permissions
-- Activity notifications
+- 即時更新
+- 留言與回饋系統
+- 基於角色的權限管理
+- 活動通知
 
-## Tech Stack
+## 技術堆疊
 
-### Frontend
+### 前端
 
-- **Framework**: Vue 2
-- **UI Components**: Element UI
-- **State Management**: Vuex
-- **HTTP Client**: Axios
+- **框架**：Vue 2
+- **UI 元件**：Element UI
+- **狀態管理**：Vuex
+- **HTTP 客戶端**：Axios
 
-### Backend
+### 後端
 
-- **Framework**: ASP.NET Core 3.1
-- **API**: RESTful Web API
-- **Authentication**: JWT (JSON Web Tokens)
-- **Database ORM**: Entity Framework Core
+- **框架**：ASP.NET Core 3.1
+- **API**：RESTful Web API
+- **驗證**：JWT (JSON Web Tokens)
+- **資料庫 ORM**：Entity Framework Core
 
-### Database
+### 資料庫
 
-- **RDBMS**: Microsoft SQL Server
-- **Schema**: Normalized relational design
-- **Indexing**: Optimized for query performance
+- **關聯式資料庫**：Microsoft SQL Server
+- **架構**：正規化關聯設計
+- **索引**：查詢效能最佳化
 
-### Infrastructure
+### 基礎設施
 
-- **File Storage**: Azure Blob Storage
-- **Caching**: Redis
-- **Deployment**: IIS / Azure App Service
+- **檔案儲存**：Azure Blob Storage
+- **快取**：Redis
+- **部署**：IIS / Azure App Service
 
-## Key Features Implementation
+## 關鍵功能實作
 
-### Task Management
+### 任務管理
 
-- Drag-and-drop Kanban board
-- Gantt chart timeline view
-- Task dependencies
-- Automated status updates
+- 拖放式看板 (Kanban)
+- 甘特圖時間軸檢視
+- 任務相依性
+- 自動化狀態更新
 
-### File Versioning
+### 檔案版本控制
 
-- Automatic version control
-- Compare revisions
-- Rollback capability
-- Change history tracking
+- 自動版本控制
+- 版本比較
+- 版本回溯功能
+- 變更歷史追蹤
 
-### Real-time Notifications
+### 即時通知
 
-- SignalR for push notifications
-- Email alerts for important events
-- In-app notification center
-- Customizable notification preferences
+- 使用 SignalR 進行推播通知
+- 重要事件的 Email 提醒
+- 應用程式內通知中心
+- 可自訂的通知偏好
 
-## Business Impact
+## 商業效益
 
-- Reduced project management overhead by 35%
-- Improved client satisfaction scores
-- Streamlined communication workflows
-- Enhanced team collaboration efficiency
-- Centralized project documentation
+- 降低 35% 的專案管理負擔
+- 提升客戶滿意度
+- 簡化溝通流程
+- 增進團隊協作效率
+- 集中化管理專案文件

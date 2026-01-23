@@ -1,71 +1,55 @@
 ---
-title: Wafer Inspection System
+title: 晶圓檢測系統
 year: 2020
-skills: ["C#", "WPF", "Motion Control", "SECS/GEM", "Machine Vision"]
-summary: Developed a defect inspection system for semiconductor wafers using motion control and SECS/GEM protocols.
+skills: ["C#", "WinForm", "Motion Control", "SECS/GEM", "Machine Vision"]
+summary: 開發一個結合運動控制與 SECS/GEM 協議的半導體晶圓瑕疵檢測系統。
 images: ["/images/wafer-inspection/1.png"]
 github: ""
 demo: ""
 ---
 
-## Overview
+## 專案概覽
 
-An automated optical inspection (AOI) system for semiconductor wafer defect detection, integrating high-precision motion control and industry-standard SECS/GEM communication protocols.
+一個適用於半導體晶圓瑕疵檢測的自動光學檢測 (AOI) 系統，整合同步高精度運動控制與業界標準 SECS/GEM 通訊協定。
 
-## Features
+## 功能特色
 
-- **High-Precision Inspection**: Micrometer-level defect detection
-- **Motion Control**: Synchronized multi-axis motion system
-- **SECS/GEM Protocol**: Industry-standard equipment communication
-- **Real-time Processing**: Fast defect classification and reporting
-- **Recipe Management**: Flexible inspection parameter configuration
+- **高精度檢測**：微米級瑕疵檢測
+- **運動控制**：同步多軸運動系統
+- **SECS/GEM 協定**：業界標準設備通訊
+- **即時處理**：快速瑕疵分類與報告
+- **配方 (Recipe) 管理**：靈活的檢測參數設定
 
-## Tech Stack
+## 技術堆疊
 
-- **Framework**: C# WPF (.NET Framework)
-- **Motion Control**: PCI motion control card drivers
-- **Machine Vision**: Industrial cameras and image processing
-- **Communication**: SECS/GEM (SEMI Equipment Communication Standard)
-- **Database**: SQL Server for defect database
+- **框架**：C# WPF (.NET Framework)
+- **運動控制**：PCI 運動控制卡驅動程式
+- **機器視覺**：工業相機與影像處理
+- **通訊**：SECS/GEM (SEMI Equipment Communication Standard)
+- **資料庫**：SQL Server 用於瑕疵資料庫
 
-## Key Components
+## 關鍵組件
 
-### Motion Control System
+### 運動控制系統
 
-- Multi-axis servo motor control
-- Precision positioning (<1μm accuracy)
-- Coordinated motion planning
-- Emergency stop and safety mechanisms
+- 多軸伺服馬達控制
+- 精密定位 (<1μm 精度)
+- 協調運動規劃
+- 緊急停止與安全機制
 
-### Vision System
+### 視覺系統
 
-- High-resolution industrial cameras
-- LED ring lighting control
-- Image acquisition and preprocessing
-- Defect detection algorithms
+- 高解析度工業相機
+- LED 環形光源控制
+- 影像擷取與預處理
+- 瑕疵偵測演算法
 
-### SECS/GEM Integration
+### SECS/GEM 整合
 
-- Equipment state management
-- Recipe management
-- Data collection and reporting
-- Alarm handling
-- Remote control capabilities
+- 設備狀態管理
+- 配方 (Recipe) 管理
+- 資料收集與報告
+- 警報處理
+- 遠端控制功能
 
-## Technical Challenges
 
-**Challenge**: Synchronizing high-speed motion with image capture
-**Solution**: Implemented trigger-based synchronized acquisition
-
-**Challenge**: Real-time defect classification
-**Solution**: Optimized image processing pipeline with GPU acceleration
-
-**Challenge**: SECS/GEM protocol complexity
-**Solution**: Built robust state machine and message handling framework
-
-## Industry Impact
-
-- Used in semiconductor manufacturing facilities
-- Improved inspection throughput by 40%
-- Reduced false detection rate by 60%
-- Enabled full automation integration with fab systems

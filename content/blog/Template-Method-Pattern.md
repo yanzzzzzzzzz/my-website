@@ -89,6 +89,18 @@ classDiagram
 
 關鍵在於**子類別不能決定流程， 只能提供資料**
 
+ `BaseReport` 中的Generate長這樣：
+
+```C#
+public void Generate() {
+    Init();
+    LoadTemplate();
+    PrefillContent();
+    ExportFile();
+    if (ConvertToPdfIfNeeded()) { ... }
+}
+```
+
 ## 解決了甚麼問題
 
 流程有了一致性

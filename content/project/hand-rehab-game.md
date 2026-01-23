@@ -1,71 +1,61 @@
 ---
-title: Hand Rehabilitation Game
+title: 手部復健互動遊戲
 year: 2018
 skills: ["Unity", "C#", "Leap Motion", "Game Development"]
-summary: Created an interactive rehabilitation game using Unity and Leap Motion to detect hand gestures in real time.
+summary: 使用 Unity 和 Leap Motion 開發的互動式復健遊戲，可即時偵測手勢。
 images: ["/images/hand-rehab-game/1.png"]
 github: ""
 demo: "https://youtu.be/IYXUUOW3wrU?si=VhDoxTl7Gz7xgQmH"
 ---
 
-## Overview
+## 專案概覽
 
-An interactive rehabilitation game designed to help patients recover hand motor functions through gamified exercises using Leap Motion hand tracking technology.
+這是一款互動式復健遊戲，旨在透過 Leap Motion 手部追蹤技術，將復健練習遊戲化，協助病患恢復手部運動功能。
 
-## Features
+## 功能特色
 
-- **Real-time Hand Tracking**: Leap Motion sensor integration
-- **Interactive Exercises**: Engaging mini-games for therapy
-- **Progress Tracking**: Monitor patient improvement
-- **Difficulty Adjustment**: Adaptive challenge levels
-- **Visual Feedback**: Immediate response to hand movements
+- **即時手部追蹤**：整合 Leap Motion 感測器
+- **互動式復健**：具吸引力的治療小遊戲
+- **進度追蹤**：監控病患的改善狀況
+- **難度調整**：適應性的挑戰等級
+- **視覺回饋**：對手部動作的即時反應
 
-## Tech Stack
+## 技術堆疊
 
-- **Engine**: Unity 3D
-- **Language**: C#
-- **Hardware**: Leap Motion Controller
-- **SDK**: Leap Motion SDK for Unity
+- **遊戲引擎**：Unity 3D
+- **程式語言**：C#
+- **硬體**：Leap Motion 控制器
+- **SDK**：Leap Motion SDK for Unity
 
-## Game Mechanics
+## 遊戲機制
 
-### Exercise Types
+### 復健類型
 
-1. **Finger Flexion**: Grasp virtual objects
-2. **Range of Motion**: Reach targets in 3D space
-3. **Precision Control**: Fine motor skill challenges
-4. **Coordination**: Multi-finger coordination tasks
+1. **手指屈曲**：抓取虛擬物件
+2. **活動範圍**：在 3D 空間中觸碰目標
+3. **精確控制**：精細動作技能挑戰
+4. **協調訓練**：多指協調任務
 
-### Therapeutic Benefits
+### 治療效益
 
-- Motivates consistent practice
-- Provides quantifiable metrics
-- Reduces therapy monotony
-- Enables home-based rehabilitation
+- 激勵持續練習
+- 提供可量化的指標
+- 減少復健過程的單調感
+- 落實居家復健
 
-## Technical Implementation
+## 技術實作
 
-### Hand Tracking
+### 手部追蹤
 
-- Real-time hand skeleton tracking
-- Gesture recognition algorithms
-- Palm and finger position analysis
-- Interaction zone detection
+- 即時手部骨架追蹤
+- 手勢識別演算法
+- 手掌與手指位置分析
+- 互動區域偵測
 
-### Game Design
+### 遊戲設計
 
-- Progressive difficulty curve
-- Reward system for motivation
-- Clear visual and audio feedback
-- Accessible UI for all age groups
+- 漸進式難度曲線
+- 提升動力的獎勵系統
+- 清晰的視覺與聽覺回饋
+- 適合各年齡層的友善介面
 
-## Demo Video
-
-Watch the system in action: [YouTube Demo](https://youtu.be/IYXUUOW3wrU?si=VhDoxTl7Gz7xgQmH)
-
-## Results
-
-- Successfully tested with rehabilitation patients
-- Positive feedback from physical therapists
-- Demonstrated measurable improvement in hand mobility
-- Potential for commercial deployment in therapy centers

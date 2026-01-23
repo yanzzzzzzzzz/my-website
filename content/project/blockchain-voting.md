@@ -1,62 +1,61 @@
 ---
-title: Blockchain Voting System
+title: 區塊鏈投票系統
 year: 2025
 skills: ["Vue", "Web3.js", "Solidity", "Ethereum", "Smart Contracts"]
-summary: Decentralized voting application on Ethereum blockchain with tamper-proof vote recording and multi-option support.
+summary: 建構於以太坊區塊鏈的去中心化投票應用程式，具備防篡改的投票記錄與多選項支援。
 images: ["/images/blockchain-voting/1.png"]
-github: ""
+github: "https://github.com/yanzzzzzzzzz/blockchain-voting-system"
 demo: ""
 ---
 
-## Overview
+## 專案概覽
 
-A decentralized voting platform built on Ethereum blockchain ensuring transparent, secure, and immutable voting processes.
+一個建構在以太坊區塊鏈上的去中心化投票平台，確保投票過程透明、安全且不可篡改。
 
-## Features
+## 功能特色
 
-- **Decentralized**: No central authority controls the votes
-- **Immutable**: Votes cannot be altered once recorded
-- **Transparent**: All votes are publicly verifiable on blockchain
-- **Multi-Option**: Support for multiple voting choices
-- **Secure**: Cryptographic security of Ethereum blockchain
+- **去中心化**：無中心化機構控制投票
+- **不可篡改**：投票一旦記錄便無法更改
+- **透明公開**：所有投票皆可在區塊鏈上公開驗證
+- **多選項支援**：支援多種投票選擇
+- **安全可靠**：以太坊區塊鏈的密碼學安全保障
 
-## Tech Stack
+## 技術堆疊
 
-- **Frontend**: Vue 3
-- **Blockchain**: Ethereum
-- **Smart Contracts**: Solidity
-- **Web3 Integration**: Web3.js
-- **Wallet**: MetaMask integration
+- **前端**：Vue 3 (搭配 PrimeVue UI)
+- **區塊鏈**：Ethereum (以太坊)
+- **智能合約**：Solidity (v0.8.20)
+- **Web3 整合**：Ethers.js
+- **錢包**：Metamask 整合
 
-## Development Period
+## 開發期間
 
-February 2025
+2025 年 2 月
 
-## Smart Contract Features
+## 智能合約功能
 
 ```solidity
-- Create new votes
-- Cast votes
-- View results
-- Prevent double voting
-- Time-bounded voting periods
+- 建立新投票
+- 進行投票
+- 查看結果
+- 防止重複投票
+- 具備時效性的投票期間
 ```
 
-## Learning Outcomes
+## 學習成果
 
-This project was developed after completing the Educative course "Building a Blockchain from Scratch Using Solidity and Ethereum".
+本專案是在完成 Educative 課程「Building a Blockchain from Scratch Using Solidity and Ethereum」後開發的。
 
-Key learnings:
+主要學習重點：
 
-- Writing and deploying Solidity smart contracts
-- Interacting with Ethereum blockchain from frontend
-- Managing wallet connections
-- Gas optimization techniques
-- Security best practices in smart contracts
+- 撰寫與部署 Solidity 智能合約
+- 從前端與以太坊區塊鏈進行互動
+- 管理錢包連線
+- Gas 手續費最佳化技巧
+- 智能合約的安全性最佳實踐
 
-## Security Considerations
+## 安全性考量
 
-- Reentrancy protection
-- Access control mechanisms
-- Input validation
-- Overflow/underflow protection
+- **重入攻擊 (Reentrancy) 防護**：採用 Check-Effects-Interactions 模式
+- **輸入驗證**：嚴格檢查投票時效與參數正確性
+- **溢位/下溢位 (Overflow/Underflow) 防護**：基於 Solidity 0.8+ 編譯器原生支援

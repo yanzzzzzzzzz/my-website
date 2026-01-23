@@ -1,36 +1,30 @@
 ---
-title: Podcast Summary
+title: Podcast 摘要生成器
 year: 2025
 skills: ["Vue", "Express", "Node.js", "AI", "OpenAI"]
-summary: Full-stack app for summarizing Apple Podcast episodes using AI, with focus on business & investment topics. Automatically extracts stock mentions and market sentiment.
+summary: 一個利用 AI 生成 Apple Podcast 節目摘要的全端應用程式，專注於商業與投資主題。可自動提取提及的股票與市場情緒。
 github: ""
 demo: ""
 ---
 
-## Overview
+## 專案概覽
 
-A full-stack application that allows users to paste Apple Podcast URLs and receive AI-generated summaries of episodes.
+一個全端應用程式，允許使用者貼上 Apple Podcast 連結並接收 AI 生成的節目摘要。
 
-## Features
+## 功能特色
 
-- **AI-Powered Summaries**: Utilizes OpenAI to generate concise summaries
-- **Stock Extraction**: Identifies Taiwan and US stock mentions
-- **Sentiment Analysis**: Determines bullish or bearish sentiment
-- **Auto-Collection**: Automatically gathers popular business podcasts
+- **AI 驅動摘要**：利用 OpenAI 生成簡潔的摘要
+- **股票代碼提取**：自動識別提及的台股與美股
+- **情緒分析**：判斷市場情緒（看多或看空）
+- **自動蒐集**：自動蒐集熱門的商業 Podcast
 
-## Tech Stack
+## 技術堆疊
 
-- **Frontend**: Vue 3 with Composition API
-- **Backend**: Express.js (Node.js)
-- **AI**: OpenAI GPT API
-- **Deployment**: TBD
+- **前端**：Vue 3 (Composition API)
+- **後端**：Express.js (Node.js)
+- **AI**：OpenAI GPT API
+- **部署**：待定
 
-## Development Period
+## 開發期間
 
-June 2025 - Present
-
-## Key Learnings
-
-- Integrating AI APIs into web applications
-- Building robust scraping mechanisms
-- Managing asynchronous operations in Node.js
+2025 年 6 月 - 至今
