@@ -39,3 +39,17 @@
   stroke: #d0e7ff !important;
   stroke-width: 1px !important;
 }
+
+/* Utility to center text, FORCEfully */
+.text-center,
+.text-center figcaption {
+  text-align: center !important;
+}
+
+/* Tooltip styling for abbr */
+abbr[title] {
+  cursor: help;
+  text-decoration: none;
+  border-bottom: 1px dashed currentColor;
+  position: relative;
+}
