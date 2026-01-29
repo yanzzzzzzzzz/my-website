@@ -120,7 +120,7 @@ Hash Table 會進行 **resize**,
 但由於 resize 並不會頻繁發生,
 整體插入與查找的平均成本仍能維持在可接受範圍
 
-## 實測Hash Table resize
+## 實測Hash Table resize & rehash
 
 ```cpp
 #include <iostream>
@@ -211,7 +211,7 @@ size = 4, bucket_count = 23, load_factor = 0.173913, max_load_factor = 0.5
 ```
 
 這段程式碼顯示, 在C++的unordered_map中,
-rehash的發生不僅取決於load factor是否超過門檻,
+resize/rehash的發生不僅取決於load factor是否超過門檻,
 實作能可能基於內部邏輯提前擴展bucket
 
 ## 時間複雜度
