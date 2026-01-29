@@ -72,7 +72,7 @@ Hash Table 會先對 key 計算 hash 值,
 Hash Table 在查找資料時,
 必須在該 bucket 內 **逐一比對 key**,
 因此查找時間不再是 O(1),
-而會退化為O(k), 其中K是bucket的資料量
+而會退化為O(k), 其中k是bucket的資料量
 
 
 
