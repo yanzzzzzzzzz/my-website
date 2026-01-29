@@ -1,6 +1,6 @@
 +++
 date = '2026-01-26T21:30:00+08:00'
-title = '深入淺出談 Linked List'
+title = '深入淺出談 Linked List：為什麼它只能一個一個走'
 tags = ["Data Structure"]
 +++
 
