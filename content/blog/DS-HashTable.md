@@ -82,7 +82,7 @@ Hash Table 在查找資料時,
 通常會使用 **load factor** 作為指標:
 
 $$
-\text{load\_factor} = \frac{\text{size}}{\text{bucket\_count}}
+\text{load\\_factor} = \frac{\text{size}}{\text{bucket\\_count}}
 $$
 
 - `size`:目前儲存的元素總數量  
@@ -213,6 +213,18 @@ size = 4, bucket_count = 23, load_factor = 0.173913, max_load_factor = 0.5
 這段程式碼顯示, 在C++的unordered_map中,
 rehash的發生不僅取決於load factor是否超過門檻,
 實作能可能基於內部邏輯提前擴展bucket
+
+## 時間複雜度
+
+在load factor受控的情況下:
+
+| 操作 | 複雜度 |
+| :--- | :--- | 
+| **讀取 (Read)** | 平均是**O(1)** | 
+| **插入 (Insert)** | 平均是**O(1)** | 
+| **刪除 (Delete)** | 平均是**O(1)** | 
+
+
 
 ## 使用情境
 
