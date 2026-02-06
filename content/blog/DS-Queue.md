@@ -49,7 +49,7 @@ B：Queue
 ### 情境A List搭配index
 
 ```Cpp
-list = [A，B，C]
+list = [A, B, C]
 i = load_index()          // 持久化的進度
 
 while i < list.length:
@@ -78,7 +78,7 @@ save_index(i)成功了，但do_side_effect(job)實際上沒完成，例如API ti
 ### 使用Queue
 
 ```Cpp
-queue = [A，B，C]
+queue = [A, B, C]
 
 while queue is not empty:
     job = queue.front()     // 先看，不移除
