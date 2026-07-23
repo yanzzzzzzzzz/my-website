@@ -224,6 +224,10 @@ void Swap(ref Student student1, ref Student student2)
 
 ---
 
+### Generic
+
+保留真正型別，同時避免以上所有問題。
+
 ## 一句話記住 Generic
 
 > **不知道型別，但保留真正的型別。**
