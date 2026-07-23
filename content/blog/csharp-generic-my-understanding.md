@@ -171,7 +171,9 @@ void Swap(ref Student student1, ref Student student2)
 }
 ```
 
-因此：**Generic 並不是 object。**它只是把真正的型別延後到使用時才決定。
+因此：**Generic 並不是 object。**
+
+它只是把真正的型別延後到使用時才決定。
 
 ---
 
