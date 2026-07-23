@@ -1,6 +1,6 @@
 +++
 date = '2026-05-20T10:00:00+08:00'
-title = '理解RAG在幹嘛'
+title = 'RAG 入門到實作：Chunking、Embedding、Top-K 與檢索品質'
 tags = ["AI", "LLM", "RAG"]
 +++
 
@@ -70,6 +70,7 @@ Deployment: Docker
 當使用者要查詢最"相似"文字資料時, 系統也把使用者的問題轉成向量, 然後透過向量索引搜尋最接近的向量。
 
 常見的向量比較方式包括 cosine similarity、dot product 與 Euclidean distance。
+
 Cosine similarity 和 dot product 通常是分數越高代表越相似；Euclidean distance 則是距離越小代表越相似。
 
 不過實際做RAG後，我覺得真正困難的地方不是在「把資料存進向量資料庫」。
@@ -84,7 +85,8 @@ Cosine similarity 和 dot product 通常是分數越高代表越相似；Euclide
 
 這些都會直接影響最後回答品質。
 
-例如chunk太大，搜尋可能不夠精準；但如果chunk太小，又可能缺少上下文資訊。另外，如果retrieval沒有找對內容，就算後面的LLM很強，最後回答還是可能會偏掉。
+例如chunk太大，搜尋可能不夠精準；但如果chunk太小，又可能缺少上下文資訊。
+另外，如果retrieval沒有找對內容，就算後面的LLM很強，最後回答還是可能會偏掉。
 
 所以我覺得：
 
@@ -103,10 +105,6 @@ Cosine similarity 和 dot product 通常是分數越高代表越相似；Euclide
 - prompt 組不好可能會影響回答
 - 文件內容本身如果錯誤，LLM還是可能回答錯
 
-另外，RAG其實也很依賴資料品質。
-
-如果資料來源本身不完整、不正確，或chunk切得不好，就算retrieval有成功，也不一定能得到理想答案。
-
 ## 適合RAG的場景
 
 - 衛教資訊
@@ -119,6 +117,8 @@ Cosine similarity 和 dot product 通常是分數越高代表越相似；Euclide
 透過 MediVector-Chat 這個專案，整合了RAG變成一個可實際操作的系統，也算是把我原本的後端開發、前後端開發與系統整合經驗，跟AI/RAG技術做結合。因為實務上要做出一個AI功能，不只是會呼叫模型API就好，還需要處理資料來源、檢索流程、API串接、前端呈現與部署方式。
 
 [GitHub Repo](https://github.com/yanzzzzzzzzz/MediVector-Chat)
+
+{{< figure src="/images/blog/RAG/demo.png" alt="RAG" caption="MediVector-Chat Demo" class="text-center" >}}
 
 ## 遇到的問題 & 解決方法
 
