@@ -260,9 +260,3 @@ void Swap(ref Student student1, ref Student student2)
 - 一份程式支援所有型別
 
 ---
-
-### 一句話記住 Generic
-
-> **不知道型別，但保留真正的型別。**
-
----
