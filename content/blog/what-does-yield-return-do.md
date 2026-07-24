@@ -1,5 +1,5 @@
 ---
-title: yield return 到底幫我們做了什麼？我是怎麼一路理解到它其實在產生 Enumerator 的
+title: yield return 到底做了什麼？從 Enumerator 理解它的運作方式
 description: 原本我把 yield return 當成比較特別的回傳值，直到一路拆開 foreach、IEnumerator 和 MoveNext() 之後，才慢慢看懂它其實在背後產生 Enumerator。
 slug: what-does-yield-return-do
 date: 2026-07-23T17:29:02+08:00

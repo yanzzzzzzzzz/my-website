@@ -53,3 +53,15 @@ abbr[title] {
   border-bottom: 1px dashed currentColor;
   position: relative;
 }
+
+/* Keep long article titles readable without overpowering the introduction. */
+.post-title {
+  font-size: 36px;
+  line-height: 1.2;
+}
+
+@media screen and (max-width: 768px) {
+  .post-title {
+    font-size: 30px;
+  }
+}
